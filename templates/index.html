@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Charger Search</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <style>
+        html,body,.root{
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .root{
+            display: grid;
+            grid-template-rows: 20rem 2.5rem 1fr;
+            grid-template-areas: "info"
+            "control"
+        "mini-map";
+        }
+        .info{
+            grid-area: info;
+            text-align: center;
+            margin: auto 0;
+        }
+        .mini-map{
+            grid-area: mini-map;
+            height: calc(100% - 5rem);
+            width: calc(100% - 5rem);
+            margin: 0 2.5rem 2.5rem 2.5rem;
+        }
+        .control{
+            grid-area: control;
+            text-align: end;
+            margin: 0 2.5rem;
+        }
+        form{
+            display: flex;
+            justify-content: center;
+        }
+        input{
+            border: 1px solid black;
+            margin: 0;
+            padding: 0.5rem;
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+        button{
+            border: 1px solid black;
+            border-left: 0;
+            margin: 0;
+            padding: 0.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .caption{
+            font-size: 0.75rem;
+            color:gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="root">
+        <header class="info">
+            <h1>Charger Search</h1>
+            <p>등록된 전국 충전소 개수 : {{count}}곳</p>
+            <p>지역당 평균 충전소 개수 : 약 {{avg}}곳</p>
+            <p class="caption">* 등록된 전국 충전소 개수 / 충전소가 설치된 광역자치단체 수</p>
+            <form action="/search" method="get">
+                <input type="search" name="value" placeholder="주소명으로 검색">
+                <button type="submit">검색</button>
+            </form>
+        </header>
+        <div class="control">
+            <a href="/map">지도 모드</a>
+        </div>
+        <iframe class="mini-map" src="http://localhost:8000/map"></iframe>
+    </div>
+</body>
+</html>
